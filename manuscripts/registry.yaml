@@ -1,0 +1,28 @@
+# Kalam manuscript registry
+#
+# Name -> path index for every manuscript, so tooling and /km-orient do not have to
+# guess the active manuscript from directory mtimes.
+#
+# `name` is the path relative to `manuscripts/`, so it encodes the optional one-level
+# grouping: `my-paper` (depth 1) vs `coauthor/their-paper` (depth 2). Each manuscript's
+# metadata.yaml remains authoritative for every field. Regenerate/verify with:
+#
+#   python lib/kalam_core/validate.py
+#   python tests/framework/test_registry.py
+#
+# This file is an index, not a source of truth. If it disagrees with a metadata.yaml,
+# the metadata wins and this file should be corrected.
+#
+# /km-new-manuscript adds an entry here for you. On a fresh install the only entry is
+# the bundled demo; delete it once you no longer need it.
+
+manuscripts:
+  - name: demo-carbon-debt
+    path: manuscripts/demo-carbon-debt
+    stage: draft_complete
+    current_version: v1.0
+    target_journal: Nature Communications
+    status: demo
+    notes: >
+      Bundled teaching manuscript. Every number in it is synthetic - see its README.md.
+      Safe to delete along with this entry once you have your own manuscripts.

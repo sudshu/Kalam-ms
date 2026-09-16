@@ -1,0 +1,73 @@
+# --- your personal additions: never committed --------------------------------
+# A reference library and a publication list are yours, not the framework's.
+resources/bibliography/master.bib
+resources/bibliography/INDEX.md
+resources/User/publications.md
+resources/User/cv/
+
+# NOTE: resources/User/USER.md IS tracked, as the placeholder that triggers
+# onboarding. Once /km-onboard fills it in, it holds your name, affiliation and
+# email. Before publishing a fork, drop it from version control:
+#     git rm --cached resources/User/USER.md
+#     echo "resources/User/USER.md" >> .gitignore
+
+# per-user agent permission overrides (the shared allowlist is .claude/settings.json)
+.claude/settings.local.json
+.claude/worktrees/
+
+# --- build output ------------------------------------------------------------
+# PDFs and Word files are regenerable from drafts/ + build.sh.
+*.pdf
+*.docx
+*.doc
+*.mp3
+**/_meta_v2.tex
+**/_combined*.md
+**/_manuscript_v*.md
+**/drafts/build_exports/submission_*.md
+**/output/trash/
+manuscripts/*/submission/*.zip
+
+# Re-include the FINAL figure PDFs that manuscripts embed (overrides *.pdf above).
+!**/figures/main/*.pdf
+!**/figures/si/*.pdf
+!**/figures/supplementary/*.pdf
+
+# --- figures -----------------------------------------------------------------
+# PNG previews are regenerable; keep them on disk, out of git.
+*.png
+*.tif
+**/figures/**/candidates/
+**/figures/**/superseded/
+**/figures/**/exploratory/
+**/figures/_archive*/
+
+# --- data blobs in manuscript analysis folders -------------------------------
+# Keep code and config; leave heavy data out.
+manuscripts/*/analysis/**/*.nc
+manuscripts/*/analysis/**/*.nc4
+manuscripts/*/analysis/**/*.h5
+manuscripts/*/analysis/**/*.npz
+manuscripts/*/analysis/**/*.csv
+
+# --- scratch and backups -----------------------------------------------------
+scratch/
+temp_fold/
+*.bak
+*.bak*
+*.bib.backup*
+
+# --- Python ------------------------------------------------------------------
+**/__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- OS and editor cruft -----------------------------------------------------
+.DS_Store
+**/.DS_Store
+Icon?
+**/Icon?
+.lh/
+**/.lh/
+*.swp

@@ -1,0 +1,38 @@
+title: ""
+short_title: ""
+project_name: ""
+authors:
+  # Pre-filled from resources/User/USER.md by /km-new-manuscript. Add coauthors below.
+  - name: ""
+    affiliation: ""
+    email: ""
+    corresponding: true
+target_journal: ""
+journal_profile: ""
+paper_type: "article"  # article | letter | review | methods | perspective
+primary_audience: ""
+adjacent_audience: ""
+reader_assumptions: ""
+style_profile: "research/style_refs/style_profile.md"
+caption_style: ""  # descriptive | assertion-led; decide per manuscript
+evidence_placement: "drafts/evidence_placement.md"  # manuscript-specific; no global quota
+format: "markdown_latex"  # markdown_latex | full_latex
+stage: "setup"  # setup | ideation | ideation_complete | skeleton | skeleton_complete | drafting | draft_complete | submitted
+current_version: "v1.0"  # bumped by /km-bump-version; build.sh reads this for output filenames
+prior_version: ""
+# Nature-family 4-file layout (the default). Skills resolve the manuscript from current_draft
+# (comma-separated manuscript-relative paths; see resources/conventions/manuscript_files.md).
+current_draft: "drafts/cover_letter.md, drafts/main_text.md, drafts/methods.md, drafts/extended_data_SI.md"
+current_pdf: ""  # set by build.sh on each build
+research_question: ""
+core_finding: ""
+analysis_dir: ""  # path to external analysis folder (can be outside Kalam project)
+notebook_id: ""  # NotebookLM notebook ID for this manuscript (from notebook_create)
+submission_date: ""
+revision_dates: []
+key_datasets: []
+key_methods: []
+style_references: []
+bibliography: "references.bib"
+created: ""
+last_updated: ""

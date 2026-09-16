@@ -1,0 +1,52 @@
+title: "Repeated hot-dry extremes leave a persistent carbon debt in modelled tropical forests"
+short_title: "Persistent carbon debt after hot-dry extremes"
+project_name: "demo-carbon-debt"
+authors:
+  - name: "A. Demo"
+    affiliation: "Department of Earth System Science, Example University, Exampleton, Country"
+    email: "a.demo@example.edu"
+    corresponding: true
+  - name: "B. Example"
+    affiliation: "Institute for Carbon Cycle Research, Example University, Exampleton, Country"
+    email: "b.example@example.edu"
+    corresponding: false
+target_journal: "Nature Communications"
+journal_profile: "resources/journal_profiles/nature_communications.md"
+paper_type: "article"  # article | letter | review | methods | perspective
+primary_audience: "Carbon-cycle and terrestrial ecosystem modellers"
+adjacent_audience: "Climate scientists and ecologists who use recovery-time metrics"
+reader_assumptions: >
+  Knows what net biome production is and why the tropical land sink matters; does not
+  know the DALEC model structure or the mechanics of counterfactual climate splicing.
+style_profile: ""
+caption_style: "descriptive"  # descriptive | assertion-led; decide per manuscript
+evidence_placement: "drafts/evidence_placement.md"
+format: "markdown_latex"  # markdown_latex | full_latex
+stage: "draft_complete"  # setup | ideation | ideation_complete | skeleton | skeleton_complete | drafting | draft_complete | submitted
+current_version: "v1.0"
+prior_version: ""
+current_draft: "drafts/cover_letter.md, drafts/main_text.md, drafts/methods.md, drafts/extended_data_SI.md"
+current_pdf: ""
+research_question: >
+  Do repeated hot-dry extremes leave tropical forests with less ecosystem carbon after
+  20 years than the same background climate trajectory without the extreme anomalies?
+core_finding: >
+  Carbon fluxes return to their baseline range within 6-18 months after most events,
+  but ecosystem carbon stocks at year 20 remain lower in 73% of simulations, with a
+  pooled median deficit of 1.9 Mg C ha-1. Flux recovery does not imply stock recovery.
+analysis_dir: ""
+notebook_id: ""
+submission_date: ""
+revision_dates: []
+key_datasets:
+  - "Synthetic climate forcing (demo fixture; not a real dataset)"
+key_methods:
+  - "Paired factual / counterfactual carbon-cycle simulation"
+  - "Neutral-splice placebo test"
+  - "Factorial process decomposition"
+style_references: []
+bibliography: "references.bib"
+created: "2026-09-16"
+last_updated: "2026-09-16"
+x_demo: true                 # marks this as the bundled teaching manuscript
+x_synthetic_data: true       # every number here is invented; never cite it
