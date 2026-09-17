@@ -1,4 +1,7 @@
-# Kalam
+<p align="center">
+  <img src="assets/kalam-banner.svg" width="100%"
+       alt="Kalam — a manuscript-preparation agent for scientific papers">
+</p>
 
 **A manuscript-preparation agent for scientific papers.** Kalam turns a coding agent
 into a writing collaborator that knows how scientific papers are actually built: from
@@ -9,13 +12,6 @@ Kalam is **prompts, conventions and small scripts** — not a service, not a mod
 wrapper around an API. There is nothing to sign up for and nothing phones home. It runs
 inside the agent you already use.
 
-```
-Stage 1: IDEATION  →  Stage 2: SKELETON  →  Stage 3: FULL MANUSCRIPT
- figures, claims,      paragraph-by-           drafted sections,
- the story arc         paragraph outline,      audits, PDF + Word
-                       evidence ledger         export
-```
-
 ## Why it exists
 
 Asking a general-purpose agent to "write my paper" produces prose that reads like an
@@ -25,6 +21,50 @@ plus 28 focused skills that each own one job and delegate the rest instead of
 duplicating it.
 
 It will not invent a result, a citation, or a claim about your track record.
+
+## How it works
+
+Three stages, each ending at a **human approval gate**. Withhold approval and the stage
+repeats; nothing moves forward until you say so. The gates are the point: drafting prose
+around an unsettled story is the most expensive mistake in paper writing, and an agent
+will cheerfully do it for you unless something stops it.
+
+```mermaid
+flowchart TB
+    Q["Your question, data and figures"] --> ID["Stage 1: /km-ideation<br/>claims, figure plan, story arc"]
+    ID -->|"you approve the story"| SK["Stage 2: /km-skeleton<br/>paragraph outline, evidence ledger"]
+    SK -->|"you approve the outline"| FM["Stage 3: /km-full-manuscript<br/>one section at a time"]
+    FM --> AU["/km-presubmit-audit<br/>and the checking skills"]
+    AU -->|"a finding changes a claim"| FM
+    AU -->|"clean"| EX["build.sh and /km-export-docx<br/>PDF and Word"]
+    EX --> S(["Submit"])
+```
+
+| Stage | You bring | Kalam produces | Gate |
+|---|---|---|---|
+| **1 · Ideation** | figures, data, a rough idea | the question, its one-sentence answer, the figure plan, which claim rests on which evidence | you confirm the story, usually with coauthors |
+| **2 · Skeleton** | the confirmed story | a paragraph-by-paragraph outline and an explicit main-text evidence budget | you confirm the outline |
+| **3 · Full manuscript** | the confirmed skeleton | drafted sections, audited, exported to PDF and Word | you submit |
+
+Every stage is recorded in the manuscript's `metadata.yaml`, and skills refuse work that
+skips one.
+
+### The checking skills have one owner each
+
+`/km-presubmit-audit` is an orchestrator, not a monolith. It owns typos, acronyms,
+structure and placeholders, and delegates everything else to the skill that owns it — so
+two skills never report the same problem in different words.
+
+```mermaid
+flowchart LR
+    P["/km-presubmit-audit<br/>typos, acronyms,<br/>structure, placeholders"]
+    P --> WC["/km-wordcount<br/>journal limits"]
+    P --> RC["/km-ref-check<br/>bibliography correctness"]
+    P --> DR["/km-deep-read<br/>paragraph roles and flow"]
+    P --> FG["/km-figures<br/>DPI, fonts, captions"]
+    P --> SI["/km-supplementary<br/>SI numbering and coverage"]
+    P --> PA["/km-polish-audit<br/>terminology consistency"]
+```
 
 ## Requirements
 
@@ -62,31 +102,73 @@ gemini          # Gemini CLI   — reads GEMINI.md
 All three files are the same brief; `CLAUDE.md` and `GEMINI.md` are symlinks to
 `AGENTS.md`.
 
-## Your first session
+## How you use it
+
+Kalam is **not a program you run**. It is a brief your agent reads. You open this folder
+with your agent, talk to it in plain language, and it works inside the manuscript folder
+according to Kalam's conventions.
+
+Three files decide what happens on any given turn:
+
+| File | Decides |
+|---|---|
+| `resources/User/USER.md` | who you are — author block, writing preferences, standing acknowledgements |
+| `manuscripts/<name>/metadata.yaml` | which manuscript, what stage it is in, which journal's rules apply |
+| the skill you ask for | what gets done — and what it refuses to do |
+
+### Your first session
 
 Say **hello**. Kalam will notice that `resources/User/USER.md` is unconfigured and offer
-to onboard you. Say yes, or ask for it directly:
+to onboard you. Say yes, or ask for it directly with `/km-onboard`.
 
-```
-/km-onboard
-```
+<p align="center">
+  <img src="assets/kalam-session.svg" width="86%"
+       alt="A terminal session: Kalam offers to onboard the user, asks who they are, then at the skeleton stage points out that one of three claims has no figure and asks whether to keep it in the main text">
+</p>
 
-It interviews you for about three minutes — name and affiliation as they should appear
-in an author list, your field, the journals you target, how you like your prose, and any
-standing funding sentence your institution requires — then writes your own
-`resources/User/USER.md`. Every skill reads that file afterwards, so author blocks,
-acknowledgements and writing calibration stop being guesswork. It also checks which
-export tools you have installed and tells you what each one unlocks.
+The interview takes about three minutes — name and affiliation as they should appear in
+an author list, your field, the journals you target, how you like your prose, and any
+standing funding sentence your institution requires. It then writes your own
+`resources/User/USER.md`, checks which export tools you have installed, and tells you
+what each one unlocks. Skip it if you prefer; Kalam will just ask the same things later,
+one at a time.
 
-Skip it if you like; Kalam will just ask you the same things later, one at a time.
+Note what happens at `/km-skeleton` above: it does **not** start writing. It reads the
+manuscript's stage and journal, notices a claim with no figure behind it, and asks. That
+exchange is the whole idea.
 
-Then pick one:
+### A normal working session
 
-- **New to Kalam?** → [`QUICKSTART.md`](QUICKSTART.md) walks you through the bundled
-  demo manuscript in about twenty minutes.
-- **Have a paper in mind?** → `/km-new-manuscript`
-- **Have a draft already?** → `/km-new-manuscript`, paste your text into `drafts/`, then
-  `/km-deep-read` for a first assessment.
+| Step | Ask for | Why |
+|---|---|---|
+| 1 | `/km-orient` | Reads the active manuscript's stage, log and latest build, summarises in a few lines, then **stops**. Costs nothing and saves the agent re-deriving context. |
+| 2 | the stage skill you need | `/km-ideation`, `/km-skeleton` or `/km-full-manuscript`, depending on where `metadata.yaml` says you are. |
+| 3 | a checking skill | `/km-deep-read` while drafting; `/km-presubmit-audit` when you think you are done. |
+| 4 | `/km-bump-version`, then `build.sh` | Versions the draft and sweeps stale exports, so `output/` does not fill with near-identical PDFs. |
+
+Decisions belong in the manuscript's `notes.md`; actions get logged to its `logfile.md`.
+Six weeks later you will want to know why you cut that figure.
+
+### Three ways in
+
+- **New to Kalam** → [`QUICKSTART.md`](QUICKSTART.md) walks you through the bundled demo
+  manuscript in about twenty minutes. Start here.
+- **A paper in mind** → `/km-new-manuscript`, then `/km-ideation`.
+- **A draft you already have** → `/km-new-manuscript`, paste your text into `drafts/`,
+  update `current_draft` in `metadata.yaml`, then `/km-deep-read` for a first assessment.
+
+### What it will not do
+
+Knowing the refusals is most of knowing how to use it:
+
+- **Draft the whole paper in one pass.** One section at a time, with you in the loop.
+- **Skip a stage.** `metadata.yaml` records where you are and skills honour it.
+- **Invent a citation, a number, or a claim about your track record.** Missing
+  information comes back as `[VERIFY: ...]`, not as plausible filler.
+- **Guess a journal's limits.** If there is no profile in
+  `resources/journal_profiles/`, it says so instead of assuming.
+- **Tell you your science is right.** It checks prose, structure and references — never
+  whether a result is real.
 
 ## The skills
 
@@ -117,6 +199,7 @@ bibliography correctness · `/km-deep-read` paragraph-by-paragraph audit ·
 
 ```
 AGENTS.md                     the agent's brief — read this to understand Kalam
+assets/                       README banner and session illustration (SVG)
 skills/km-*/SKILL.md          28 skills, one job each
 resources/
   conventions/                the rules: writing style, figures, export, metadata

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Kalam — a manuscript-preparation agent for scientific papers">
+  <title>Kalam</title>
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#151d30"/>
+      <stop offset="100%" stop-color="#0e1422"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e3aa6e"/>
+      <stop offset="100%" stop-color="#b06a35"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#d08b4f" stop-opacity="0"/>
+      <stop offset="18%"  stop-color="#d08b4f" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#d08b4f" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background painted by the SVG itself, so it reads identically on light and dark themes -->
+  <rect width="1200" height="300" rx="14" fill="url(#ink)"/>
+
+  <!-- faint ruled lines, suggesting a manuscript page -->
+  <g stroke="#f5eee4" stroke-opacity="0.06" stroke-width="1">
+    <line x1="706" y1="60"  x2="1148" y2="60"/>
+    <line x1="706" y1="96"  x2="1148" y2="96"/>
+    <line x1="706" y1="132" x2="1148" y2="132"/>
+    <line x1="706" y1="168" x2="1148" y2="168"/>
+    <line x1="706" y1="204" x2="1148" y2="204"/>
+  </g>
+
+  <!-- pen nib: flat shoulders tapering to a point, breather hole and slit -->
+  <g transform="translate(24,26) scale(0.88)">
+    <path d="M 94 60 L 162 60 C 172 60 178 68 178 80 L 180 128 L 128 224 L 76 128 L 78 80 C 78 68 84 60 94 60 Z"
+          fill="url(#copper)"/>
+    <circle cx="128" cy="118" r="11.5" fill="#101725"/>
+    <path d="M 128 129 L 128 220" stroke="#101725" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 96 84 L 160 84" stroke="#fdf4e8" stroke-opacity="0.2" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="252" y="128" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif"
+        font-size="86" letter-spacing="15" fill="#f5eee4">KALAM</text>
+
+  <line x1="256" y1="156" x2="604" y2="156" stroke="#d08b4f" stroke-width="2" stroke-opacity="0.85"/>
+
+  <text x="256" y="194" font-family="Georgia, 'Times New Roman', serif"
+        font-size="25" font-style="italic" fill="#d9a06a">the pen</text>
+
+  <text x="256" y="236" font-family="'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="23" fill="#9aa6bf">A manuscript-preparation agent for scientific papers</text>
+
+  <!-- ink flourish along the base, clear of all text -->
+  <path d="M 60 274 C 340 284 760 264 1140 272" stroke="url(#fade)" stroke-width="2.5"
+        fill="none" stroke-linecap="round"/>
+</svg>

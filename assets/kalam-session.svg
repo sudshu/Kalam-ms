@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" width="900" height="660" role="img" aria-label="A Kalam session: onboarding, then the skeleton stage asking about an unsupported claim">
+  <title>A Kalam session</title>
+  <style>
+    .m { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace; font-size: 17px; }
+    .sh   { fill: #6b7894; }
+    .you  { fill: #f5eee4; }
+    .k    { fill: #93a1bd; }
+    .cmd  { fill: #e0a468; }
+    .ok   { fill: #8fc7a8; }
+    .dim  { fill: #55617c; }
+  </style>
+
+  <rect width="900" height="660" rx="12" fill="#0f1420"/>
+  <path d="M 0 12 A 12 12 0 0 1 12 0 L 888 0 A 12 12 0 0 1 900 12 L 900 46 L 0 46 Z" fill="#1a2132"/>
+  <circle cx="26" cy="23" r="6" fill="#e06c5b"/>
+  <circle cx="48" cy="23" r="6" fill="#e0b25b"/>
+  <circle cx="70" cy="23" r="6" fill="#8fc7a8"/>
+  <text x="450" y="29" class="m dim" font-size="14" text-anchor="middle">Kalam-ms</text>
+
+  <text x="40" y="92"  class="m sh">$ <tspan class="you">cd Kalam-ms &amp;&amp; claude</tspan></text>
+
+  <text x="40" y="146" class="m ok">Kalam — manuscript preparation agent</text>
+
+  <text x="40" y="200" class="m cmd">&gt; <tspan class="you">hello</tspan></text>
+  <text x="40" y="236" class="m k">Your profile isn't configured yet, so I don't know who you are.</text>
+  <text x="40" y="263" class="m k">That takes about three minutes — shall I run <tspan class="cmd">/km-onboard</tspan>?</text>
+
+  <text x="40" y="317" class="m cmd">&gt; <tspan class="you">yes</tspan></text>
+  <text x="40" y="353" class="m k"><tspan class="ok">1/4 · Who you are.</tspan> Name as it should appear in an author list,</text>
+  <text x="40" y="380" class="m k">affiliation, email, career stage?</text>
+
+  <text x="40" y="420" class="m dim">⋯  profile written to resources/User/USER.md</text>
+
+  <text x="40" y="474" class="m cmd">&gt; <tspan class="you">/km-skeleton</tspan></text>
+  <text x="40" y="510" class="m dim">manuscripts/overshoot/metadata.yaml → stage: ideation_complete</text>
+  <text x="40" y="537" class="m dim">Nature Communications · profile found · abstract limit 150 words</text>
+  <text x="40" y="573" class="m k">Before I outline anything: your ideation lists three claims, but</text>
+  <text x="40" y="600" class="m k">only two have figures. Claim 3 rests on Table S1 alone.</text>
+  <text x="40" y="627" class="m k">Keep it in the main text, or move it to the SI?</text>
+</svg>
