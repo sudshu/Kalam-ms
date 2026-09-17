@@ -134,9 +134,9 @@ one-word reason tag (register/economy/flow/precision/tense/caption).
 rewrites routinely break inter-sentence flow — fix transitions, de-duplicate sentence
 openings introduced by the pass, and confirm the paragraph still makes its original argument.
 Then re-run the full register checklist on every REPLACEMENT sentence: a rewrite can
-introduce a new cliché or metadiscursive transition. In the first live run (demo-carbon-debt, 2026-07-02) the pass itself
-wrote "The natural next question is…" and "…is worth noting here" — both metadiscourse,
-both caught only on a later sweep.
+introduce a new cliché or metadiscursive transition. This is not hypothetical — on a live
+manuscript the pass itself wrote "The natural next question is…" and "…is worth noting
+here", both metadiscourse, and both were caught only on a later sweep.
 
 ## Step 4: What NOT to "fix"
 

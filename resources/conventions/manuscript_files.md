@@ -56,13 +56,14 @@ historical token scan: it matches only `[A-Za-z0-9_]+\.md` and therefore
 **discards any subdirectory** in a `current_draft` entry, then searches
 `drafts/v2/` → `drafts/` → the manuscript root.
 
-Consequence, as of 2026-09-09: `manuscripts/example-paper` declares
-`drafts/nature_editorial_rebuild/{main_text,methods,extended_data_SI}.md`, but the
-legacy scan reduces those to bare filenames and finds `drafts/v2/*.md` first — so
-the inventory-consuming audit skills (`/km-deep-read`, `/km-figures`,
-`/km-ref-check`, `/km-supplementary`, `/km-presubmit-audit`) read a **stale v2
-draft** for that manuscript. `/km-audio`, which uses the canonical function,
-resolves it correctly.
+Consequence: if a manuscript declares `current_draft` with a subdirectory — say
+`drafts/nature_rebuild/{main_text,methods,extended_data_SI}.md` — while an older
+`drafts/v2/` still exists on disk, the legacy scan reduces those entries to bare
+filenames and finds the `drafts/v2/` copies first. The inventory-consuming audit
+skills (`/km-deep-read`, `/km-figures`, `/km-ref-check`, `/km-supplementary`,
+`/km-presubmit-audit`) then read a **stale draft**, while skills using the canonical
+resolver read the right one. If an audit reports content you do not recognise, check
+this first: delete or rename the superseded directory.
 
 Switching `inventory.py` to `legacy=False` fixes this but changes which files
 those audits read, so it is an explicit user decision, not a silent change.

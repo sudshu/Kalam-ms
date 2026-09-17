@@ -6,8 +6,10 @@ description: "Use when the user wants journal handling-editor feedback on the ma
 # Journal Handling-Editor Panel (dual independent reviews + synthesis)
 
 Every time the user asks for **editor feedback**, run BOTH reviewers below — never just one — then synthesize.
-Rationale: on 2026-07-02 (demo-carbon-debt) the two independently converged on the same gating items (high
-confidence) while each caught problems the other missed; the convergence/divergence structure is the product.
+Rationale: run on a live manuscript, the two reviewers independently converged on the same
+gating items — which is what makes those items high-confidence — while each also caught
+problems the other missed. The convergence/divergence structure is the product, so one
+reviewer alone loses most of the value.
 
 ## The two reviewers (always both, launched in parallel)
 

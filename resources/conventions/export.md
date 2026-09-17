@@ -24,7 +24,7 @@ the extension (e.g. `<LastName>_<slug>_vX.Y.pdf` + `.docx`). Rules:
   artifacts (no standalone supplementary PDF or DOCX) — the SI PDF may still be built as a
   temporary intermediate for `pdfunite`, but it is not written to `exports/` or `output/`.
 - The manuscript's build script copies the combined PDF into `output/share_ready/` on every
-  build (see demo-carbon-debt `drafts/build_exports/build_full.sh` for the reference implementation);
+  build (the manuscript's own `drafts/build_exports/build_full.sh`, where it has one);
   the canonical build target in `exports/` (pointed to by `metadata.yaml → current_pdf`) is
   unchanged, so `/km-bump-version` and tidy-exports keep working.
 - Versioned filenames in `output/share_ready/` are swept to `output/trash/` by the version-bump
@@ -40,8 +40,8 @@ and the Supplementary Information. A `\clearpage`-only break is dropped from Wor
 DOCX path strips raw LaTeX (Word cannot embed vector PDF figures).
 
 The script is idempotent and `--remove` round-trips. A manuscript with its own build script
-should invoke it there rather than by hand; `manuscripts/example-paper/drafts/v6/build_v6.sh`
-runs it before every target and honours `KM_PAGE_BREAKS=0`.
+should invoke it there rather than by hand, running it before every target and honouring
+`KM_PAGE_BREAKS=0` so the breaks can be skipped for a draft build.
 
 ## LaTeX to PDF
 ```bash

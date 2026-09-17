@@ -35,16 +35,18 @@ setup → ideation → ideation_complete → skeleton → skeleton_complete
       → drafting → draft_complete → submitted
 ```
 
-A value outside this set is reported as NOTICE, not corrected. As of 2026-09-09
-`coauthor/example-review` uses `stage: "coauthor review"`, which is **not** in
-the enum. That is an open decision — either add a coauthor-review state to the
-enum, or map it onto `draft_complete`. It has deliberately been left as-is.
+A value outside this set is reported as NOTICE, not corrected — the validator is
+advisory and never rewrites your metadata. A manuscript sitting in coauthor review,
+for instance, may carry `stage: "coauthor review"`, which is not in the enum. Either
+add the state to the enum for your own workflow or map it onto `draft_complete`;
+leaving it outside the enum is also fine, and only produces a NOTICE.
 
 ## Project-specific extension keys
 
-Manuscripts legitimately accumulate their own keys — `example-review` carries
-roughly 35 (`active_targeted_tracker`, `v2_1_accepted_docx`, …) that track a
-live coauthor revision. **These are allowed and are never flagged for renaming.**
+Manuscripts legitimately accumulate their own keys. A manuscript in active coauthor
+revision can easily carry a few dozen (`active_targeted_tracker`,
+`v2_1_accepted_docx`, …) tracking state that matters only to it. **These are allowed
+and are never flagged for renaming.**
 
 For **new** keys, prefer an `x_` prefix (`x_active_review_tracker`) so core and
 project-local fields stay visually distinct. Existing keys are grandfathered:

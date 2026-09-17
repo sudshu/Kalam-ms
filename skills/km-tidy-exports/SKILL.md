@@ -47,4 +47,4 @@ python3 "$MS/../../skills/km-tidy-exports/scripts/tidy_exports.py" --manuscript 
 
 ## Origin
 
-Created 2026-07-04 (demo-carbon-debt session) after the v0.1→v0.2 bump left three stale v0.1 twocol PDFs plus a stale SI PDF in `exports/`; the user asked for old versions to be trashed automatically on every new build.
+Written after a version bump left three stale PDFs of the previous version, plus a stale SI PDF, sitting in `exports/` alongside the new ones. Superseded builds should be swept automatically on every new build rather than accumulating until someone notices.

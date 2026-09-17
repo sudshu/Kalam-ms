@@ -7,7 +7,7 @@ something, unless ``--strict`` is passed. Nothing in the framework gates on it.
 Design constraints (2026-09-09):
 
 * **Backward compatible.** Manuscripts carry many project-specific keys
-  (``example-review`` has ~35). Unknown keys are reported as ``extension`` at
+  (a manuscript in active revision can carry a few dozen). Unknown keys are reported as ``extension`` at
   INFO level and are never errors. New keys are *encouraged* to use an ``x_``
   prefix, but existing ones are not flagged for renaming.
 * **No invented requirements.** It checks internal consistency only — that

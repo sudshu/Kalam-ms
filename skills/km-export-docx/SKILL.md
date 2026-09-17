@@ -27,17 +27,17 @@ If the user says "quick", "fast", "just export", or "no formatting", use Quick m
 Before using a combined builder, read `metadata.yaml → submission_docx_mode`:
 
 - **`separate`**: main manuscript and SI must be exported as independent DOCX files, even if a
-  legacy combined builder exists. Prefer a manuscript-specific split builder — example-paper's
-  `drafts/v6/build_v6.sh docx` is the worked example (one source list drives both formats, so each
-  DOCX ships with a content-identical PDF twin in `output/share_ready/`), or demo-carbon-debt's
-  `drafts/build_exports/build_submission_docx.py`; otherwise use the per-file recipes below.
+  legacy combined builder exists. Prefer a manuscript-specific split builder kept in that
+  manuscript's own `drafts/` — typically a `build_*.sh` or `build_*_docx.py` driven by a single
+  source list, so each DOCX ships with a content-identical PDF twin in `output/share_ready/`.
+  Where the manuscript has no such builder, use the per-file recipes below.
   Verify that the main DOCX contains no Supplementary Information heading and that the SI DOCX
   retains its own title, figures, tables and references.
 - **`combined` or absent**: apply the combined-builder check below.
 
 Before exporting per-file, check whether the manuscript builds a **combined document** (SI bundled
-into the main deliverable) — indicated by a combined builder under `drafts/` (e.g. demo-carbon-debt's
-legacy `drafts/build_exports/build_combined_docx.py`). If so, follow the share-ready layout convention
+into the main deliverable) — indicated by a combined builder under the manuscript's own `drafts/`,
+for example a legacy `drafts/build_exports/build_combined_docx.py`. If so, follow the share-ready layout convention
 (`resources/conventions/export.md`, "Share-ready folder layout", user decision 2026-07-23):
 
 1. Run the manuscript's combined builder → one DOCX in `output/share_ready/`.
@@ -126,8 +126,8 @@ script inserted (add + remove round-trips the file byte-for-byte); `--no-after-a
 
 Because the breaks live in the source, they also appear in a Quick export and in every PDF
 built from the same files. A manuscript with its own build script should call this from the
-script so the two formats cannot drift — see `manuscripts/example-paper/drafts/v6/build_v6.sh`,
-which runs it before every target and honours `KM_PAGE_BREAKS=0` to skip.
+script so the two formats cannot drift: call it before every target, and honour
+`KM_PAGE_BREAKS=0` so a draft build can skip the breaks.
 
 ### Step 3: Convert Markdown to Word via Pandoc
 

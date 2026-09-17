@@ -49,9 +49,9 @@ Both citation styles are excluded before counting:
 This matters because several Kalam manuscripts write citations as author-year text and
 convert them to numbered references only at build time. In the submitted PDF each one
 prints as a superscript numeral, so counting the author-year string as prose overstates
-the manuscript — by about 190 words, or 6%, on a 3,000-word Nature Article. Before this
-was handled, example-paper v6.2 counted 3,180 against a ~3,000 limit and appeared over;
-the true figure is 2,990.
+the manuscript — by about 190 words, or 6%, on a 3,000-word Nature Article. A manuscript
+whose true narrative length is 2,990 words therefore counted 3,180 before this was
+handled, and appeared to be over a 3,000-word limit when it was not.
 
 Mixed parentheticals are handled segment by segment: `(Kaiser et al., 2012;
 Supplementary Note 1)` keeps the cross-reference and drops only the citation. A
